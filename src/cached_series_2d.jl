@@ -42,7 +42,7 @@ end
 cache_idxs(A::CachedSeries2D) = error("Subtypes of CachedSeries2D must implement their own cache_idxs method to retrieve a tuple of integer indices locating the cached 2D slice")
 cache(A::CachedSeries2D) = error("Subtypes of CachedSeries2D must implement their own cache method to retrieve the currently cached 2D slice array")
 update_cache!(A::CachedSeries2D, args...) = error("Subtypes of CachedSeries2D must implement their own update_cache! method to update or replace the current cached slice array")
-size(A::CachedSeries2D, args...) = error("Subtypes of CachedSeries2D must implement their own size method")
+size(A::CachedSeries2D) = error("Subtypes of CachedSeries2D must implement their own size method")
 
 show(io::IO, ::MIME"text/plain", A::CachedSeries2D{T}) where {T} = show(io, A)
 show(io::IO, A::CachedSeries2D{T}) where {T} = print(io, "Subtypes of CachedSeries2D should implement their own show(io::IO, A) method")
