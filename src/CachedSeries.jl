@@ -9,6 +9,8 @@ export CachedSeries2D,
         match_axisspacing #utility
 
 include("util.jl")
+include("cached_series.jl")
 include("cached_series_2d.jl")
+include("cached_series_3d.jl")
 
 end # module

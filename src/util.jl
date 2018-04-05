@@ -11,6 +11,8 @@ end
 
 _index_slice(A::AbstractArray{T,2}, dim1::Colon, dim2::Colon) where {T} = A
 _index_slice(A::AbstractArray{T,2}, dim1, dim2) where {T} = A[dim1,dim2]
+_index_slice(A::AbstractArray{T,3}, dim1::Colon, dim2::Colon, dim3::Colon) where {T} = A
+_index_slice(A::AbstractArray{T,3}, dim1, dim2, dim3) where {T} = A[dim1,dim2,dim3]
 
 #This is an odd place to keep these.  Could see about PR to AxisArrays?
 axisspacing(A::AxisArray) = map(step, axisvalues(A))
