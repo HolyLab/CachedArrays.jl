@@ -5,6 +5,7 @@ using Images, AxisArrays, Unitful #just for utility functions (may move those?)
 import Base: size, getindex, setindex!, show, eltype
 
 export CachedSeries2D,
+        CachedSeries3D,
         axisspacing,      #utility
         match_axisspacing #utility
 

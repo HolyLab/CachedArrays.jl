@@ -1,13 +1,13 @@
+lose_colons(idxs, idxc::Colon, idxsc...) = (first(idxs), lose_colons(Base.tail(idxs), idxsc...)...)
+lose_colons(idxs, idxc, idxsc...) = (idxc, lose_colons(Base.tail(idxs), idxsc...)...)
+lose_colons(::Tuple{}) = ()
+lose_colons(idxs, ::Tuple{}) = error("Argument Tuples must be of equal length")
+lose_colons(::Tuple{}, idxc, idxsc...) = error("Argument Tuples must be of equal length")
+
 _idxs(A, dim, idxs) = idxs
 _idxs(A, dim, idxs::Colon) = indices(A,dim)
-
-function _idx_shape(A::AbstractArray, idxs)
-    lens = zeros(Int, ndims(A))
-    for i = 1:ndims(A)
-        lens[i] = length(_idxs(A, i, idxs[i]))
-    end
-    return (lens...)
-end
+_idxs(A::AbstractArray, idxs) = lose_colons(indices(A), idxs...)
+_idx_shape(A::AbstractArray, idxs) = map(length, _idxs(A, idxs))
 
 _index_slice(A::AbstractArray{T,2}, dim1::Colon, dim2::Colon) where {T} = A
 _index_slice(A::AbstractArray{T,2}, dim1, dim2) where {T} = A[dim1,dim2]
