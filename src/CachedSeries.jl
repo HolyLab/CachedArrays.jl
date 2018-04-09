@@ -1,3 +1,5 @@
+__precompile__()
+
 module CachedSeries
 
 using Images, AxisArrays, Unitful #just for utility functions (may move those?)
