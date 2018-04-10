@@ -2,6 +2,8 @@
 abstract type CachedSeries3D{TO,TI,N} <: AbstractCachedSeries{TO,TI,N} end
 
 getindex(A::CachedSeries3D, dim1, dim2, dim3, dim4::Int) = _getslice(A, dim1, dim2, dim3, (dim4,))
+getindex(A::CachedSeries3D, dim1::Int) = getindex(A, ind2sub(A, dim1)...)
+getindex(A::CachedSeries3D, dim1::CartesianIndex) = getindex(A, dim1.I...)
 
 function _getslice(A::CachedSeries3D, dim1, dim2, dim3, queryidxs::NTuple{N,Int}) where {N}
     if cache_idxs(A) != queryidxs
