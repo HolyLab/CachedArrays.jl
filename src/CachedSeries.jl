@@ -10,6 +10,8 @@ export CachedSeries2D,
         CachedSliceSeries2D,
         CachedSeries3D,
         CachedSliceSeries3D,
+        colon_to_inds,
+        drop_singles,
         axisspacing,      #utility
         match_axisspacing #utility
 

@@ -16,9 +16,11 @@ end
 #returns multiple slices.  This is memory-inefficient (allocates 2x as much as a mutating version would)
 #function getindex(A::CachedSeries2D{T}, dim1::Union{AbstractUnitRange,Colon}, dim2::Union{AbstractUnitRange,Colon}, queryidxs...) where {T}
 function getindex(A::CachedSeries2D{T}, dim1, dim2, queryidxs...) where {T}
-    outsz = _idx_shape(A, (dim1, dim2, queryidxs...))
+    inds = colon_to_inds(indices(A), dim1, dim2, queryidxs...)
+    outsz = map(length, inds)
     output = zeros(T, outsz...)
-    _getindex!(output, A, lose_colons(indices(A), dim1, dim2, queryidxs...)...)
+    _getindex!(output, A, inds...)
+    return reshape(output, map(length, drop_singles(inds...)))
 end
 
 function _getindex!(prealloc::AbstractArray{TO}, A::CachedSeries2D{TO}, idxs1, idxs2, queryidxs...) where {TO}
