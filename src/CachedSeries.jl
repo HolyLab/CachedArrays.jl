@@ -2,7 +2,10 @@ __precompile__()
 
 module CachedSeries
 
-using Images, AxisArrays, Unitful #just for utility functions (may move those?)
+#below deps are just for utility functions (may move those?)
+using Images, Unitful
+using AxisArrays
+const axes = Base.axes
 
 import Base: size, getindex, setindex!, show, eltype, indices
 

@@ -1,4 +1,4 @@
-abstract type AbstractCachedSeries{TO,TI,N} <: AbstractArray{TO,N} end
+abstract type AbstractCachedSeries{TO,TI,N,AA} <: AbstractArray{TO,N} end
 
 eltype(A::AbstractCachedSeries{T}) where {T} = T
 Base.IndexStyle(::Type{<:AbstractCachedSeries}) = IndexCartesian()
@@ -11,5 +11,5 @@ size(A::AbstractCachedSeries) = error("Subtypes of AbstractCachedSeries must imp
 
 show(io::IO, ::MIME"text/plain", A::AbstractCachedSeries{T}) where {T} = show(io, A)
 show(io::IO, A::AbstractCachedSeries{T}) where {T} = print(io, "Subtypes of AbstractCachedSeries should implement their own show(io::IO, A) method")
-getindex(A::AbstractCachedSeries, args...) = error("Subtypes of AbstractCachedSeries should implement their own getindex method")
-setindex!(A::AbstractCachedSeries, args...) = error("Subtypes of AbstractCachedSeries are read-only by default")
+#getindex(A::AbstractCachedSeries, args...) = error("Subtypes of AbstractCachedSeries should implement their own getindex method")
+#setindex!(A::AbstractCachedSeries, args...) = error("Subtypes of AbstractCachedSeries are read-only by default")
