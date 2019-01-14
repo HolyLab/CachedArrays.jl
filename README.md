@@ -1,4 +1,7 @@
 # CachedArrays
+[![Build Status](https://travis-ci.com/HolyLab/CachedArrays.jl.svg?branch=master)](https://travis-ci.com/HolyLab/CachedArrays.jl)
+[![Build status](https://ci.appveyor.com/api/projects/status/2bqgvmga8nu79vti/branch/master?svg=true)](https://ci.appveyor.com/project/Cody-G/cachedarrays-jl/branch/master)
+[![codecov](https://codecov.io/gh/HolyLab/CachedArrays.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/HolyLab/CachedArrays.jl)
 
 This package defines a concrete type, `CachedArray`, that caches data accessed in the first `n` dimensions of the array that it wraps, where `n` is selectable by the user:
 
