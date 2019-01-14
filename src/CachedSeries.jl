@@ -14,12 +14,6 @@ export CachedArray,
         noncache_axes,
         axisspacing,      #utility
         match_axisspacing #utility
-        #CachedSeries2D,
-        #CachedSliceSeries2D,
-        #CachedSeries3D,
-        #CachedSliceSeries3D,
-        #colon_to_inds,
-        #drop_singles,
 
 include("util.jl")
 include("cached_series.jl")
