@@ -1,4 +1,4 @@
-abstract type AbstractCachedSeries{TO,TI,N,AA} <: AbstractArray{TO,N} end
+abstract type AbstractCachedSeries{TO,TI,N,NC,AA} <: AbstractArray{TO,N} end
 
 eltype(A::AbstractCachedSeries{T}) where {T} = T
 Base.IndexStyle(::Type{<:AbstractCachedSeries}) = IndexCartesian()
