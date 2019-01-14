@@ -1,4 +1,4 @@
-using CachedSeries
+using CachedArrays
 using Test
 
 #construct 2d and 3d cached slice series

@@ -1,6 +1,4 @@
-__precompile__()
-
-module CachedSeries
+module CachedArrays
 
 #below deps are just for utility functions (may move those?)
 using Images, Unitful
