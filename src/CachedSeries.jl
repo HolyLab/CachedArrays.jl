@@ -10,14 +10,13 @@ const axes = Base.axes
 import Base: size, getindex, setindex!, show, eltype, indices
 
 export CachedArray,
-        cache_axes,
-        noncache_axes,
+        cached_axes,
+        noncached_axes,
         axisspacing,      #utility
         match_axisspacing #utility
 
 include("util.jl")
-include("cached_series.jl")
-include("cached_series_nd.jl")
-include("cached_slice_series_nd.jl")
+include("abstract_cached_array.jl")
+include("cached_array.jl")
 
 end # module

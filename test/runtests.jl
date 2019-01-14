@@ -11,11 +11,11 @@ cs25 = CachedArray(data5, 2)
 @test parent(cs24) == data4
 @test parent(cs25) == data5
 
-@test cache_axes(cs24) == axes(cs24)[1:2]
-@test cache_axes(cs25) == axes(cs25)[1:2]
+@test cached_axes(cs24) == axes(cs24)[1:2]
+@test cached_axes(cs25) == axes(cs25)[1:2]
 
-@test noncache_axes(cs24) == axes(cs24)[3:end]
-@test noncache_axes(cs25) == axes(cs25)[3:end]
+@test noncached_axes(cs24) == axes(cs24)[3:end]
+@test noncached_axes(cs25) == axes(cs25)[3:end]
 
 #2d caching, 4d array
 #now test various getindex implementations
