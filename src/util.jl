@@ -4,10 +4,10 @@ match_axisspacing(B::AbstractArray{T,N}, A::IM) where {T,N, IM<:ImageMeta} = Ima
 function match_axisspacing(B::AbstractArray{T,N}, A::AxisArray{T2,N}) where {T,T2,N}
     sp = axisspacing(A)
     nms = axisnames(A)
-    newaxs = []
-    for ax = 1:length(sp)
+    axf = ax->begin
         u = unit(sp[ax])
-        push!(newaxs, Axis{nms[ax]}(linspace(0.0*u, (size(B,ax)-1)*sp[ax], size(B,ax))))
+        Axis{nms[ax]}(range(0.0*u, stop=(size(B,ax)-1)*sp[ax], length=size(B,ax)))
     end
+    newaxs = map(axf, 1:length(sp))
     return AxisArray(B, newaxs...)
 end
