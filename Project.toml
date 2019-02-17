@@ -7,11 +7,11 @@ AxisArrays = "39de3d68-74b9-583c-8d2d-e117c070f3a9"
 Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
+[compat]
+julia = ">= 0.7"
+
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
 test = ["Test"]
-
-[compat]
-julia = ">= 0.7"
