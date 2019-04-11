@@ -1,4 +1,4 @@
-mutable struct CachedArray{T,N,NC,AA<:AbstractArray} <: AbstractCachedArray{T,T,N,NC,AA}
+mutable struct CachedArray{T,N,NC,AA<:AbstractArray} <: AbstractCachedArray{T,N,T,NC,AA}
     parent::AA
     cached::Array{T,NC}
     current_I::Tuple
