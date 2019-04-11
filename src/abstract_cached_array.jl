@@ -1,4 +1,5 @@
-abstract type AbstractCachedArray{TO,TI,N,NC,AA} <: AbstractArray{TO,N} end
+#abstract type AbstractCachedArray{TO,TI,N,NC,AA} <: AbstractArray{TO,N} end
+abstract type AbstractCachedArray{TO,N,TI,NC,AA} <: AbstractArray{TO,N} end
 
 #IndexCartesian is the default, but in case that changes...
 Base.IndexStyle(::Type{<:AbstractCachedArray}) = IndexCartesian()
@@ -33,20 +34,20 @@ end
 Base.show(io::IO, A::AbstractCachedArray) = print(io, summary(A)*"\n")
 Base.show(io::IO, ::MIME"text/plain", A::AbstractCachedArray) = show(io, A)
 
-getindex(A::AbstractCachedArray{TO,TI,N,NC,AA}, I::Vararg{Int,N}) where {TO,TI,N,NC,AA} =
+getindex(A::AbstractCachedArray{TO,N,TI,NC,AA}, I::Vararg{Int,N}) where {TO,N,TI,NC,AA} =
     _getslice(A, _cached_axes(axes(cache(A)), (I...,)), _noncached_axes(axes(cache(A)), (I...,)))
 
-setindex!(A::AbstractCachedArray{TO,TI,N,NC,AA}, v, I::Vararg{Int, N}) where {TO,TI,N,NC,AA} =
+setindex!(A::AbstractCachedArray{TO,N,TI,NC,AA}, v, I::Vararg{Int, N}) where {TO,N,TI,NC,AA} =
     _setslice!(A, v, _cached_axes(axes(cache(A)), (I...,)), _noncached_axes(axes(cache(A)), (I...,)))
 
-function _getslice(A::AbstractCachedArray{TO,TI,N,NC,AA}, cidxs::NTuple{NC,Int}, ncidxs::NTuple{NV,Int}) where {TO,TI,N,NC,AA,NV}
+function _getslice(A::AbstractCachedArray{TO,N,TI,NC,AA}, cidxs::NTuple{NC,Int}, ncidxs::NTuple{NV,Int}) where {TO,N,TI,NC,AA,NV}
     if current_I(A) != ncidxs
         update_cache!(A, ncidxs)
     end
     return cache(A)[cidxs...] #Assumes the cache and the parent have the same indexing conventions. May be fine since we constructed with similar.
 end
 
-function _setslice!(A::AbstractCachedArray{TO,TI,N,NC,AA}, val, cidxs::NTuple{NC,Int}, ncidxs::NTuple{NV,Int}) where {TO,TI,N,NC,AA,NV}
+function _setslice!(A::AbstractCachedArray{TO,N,TI,NC,AA}, val, cidxs::NTuple{NC,Int}, ncidxs::NTuple{NV,Int}) where {TO,N,TI,NC,AA,NV}
     A.parent[cidxs..., ncidxs...] = val
     if current_I(A) != ncidxs
         update_cache!(A, ncidxs)
