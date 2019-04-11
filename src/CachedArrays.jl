@@ -5,7 +5,7 @@ using Images, Unitful
 using AxisArrays
 const axes = Base.axes
 
-import Base: size, getindex, setindex!, show, eltype, indices
+import Base: size, getindex, setindex!, show, eltype, parent, axes
 
 export CachedArray,
         cached_axes,
