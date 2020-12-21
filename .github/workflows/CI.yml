@@ -16,6 +16,7 @@ jobs:
           - '1.1'
         os:
           - ubuntu-latest
+          - windows-latest
         arch:
           - x64
     steps:
