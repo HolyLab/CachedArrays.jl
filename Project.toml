@@ -9,7 +9,7 @@ Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
 [compat]
 AxisArrays = "0.4"
-Images = "0.23, 0.24, 0.25"
+Images = "0.23, 0.24, 0.25, 0.26"
 Unitful = "1"
 julia = "0.7, 1"
 
